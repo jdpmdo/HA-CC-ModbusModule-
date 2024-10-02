@@ -1,0 +1,194 @@
+
+
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+
+logger:
+  default: info
+
+
+
+# Example yaml: tcp connection and serial connection
+M1614:
+  modules:
+
+
+    PA:
+      serial_port: '/dev/ttyUSB0'
+      serial_baudrate: 19200
+      serial_parity: 'N'
+      serial_stopbits: 1
+      serial_bytesize: 8
+      slave_id: 20
+      register_address: 1
+      delay: 2
+      serial_errors: 200
+      serial_sleep: 40
+      quantity_HRO : 2
+      quantity_HRI : 1    
+
+      HRI:
+        - [0, 0, "I1 Pieza centro"]
+        - [0, 1, "I2 Pieza placar"]
+        - [0, 2, "I3 Baño_p pieza"]
+        - [0, 3, "I4 Rocio"]
+        - [0, 4, "I5 Agustin"]
+        - [0, 5, "I6 Baño centro"]
+        - [0, 6, "I7 Baño lavatorio"]
+        - [0, 7, "I8 Sala 1"]
+        - [0, 8, "I9 Sala 2"]
+        - [0, 9, "I10 Escalera"]
+        - [0, 10, "I11 Pasillo"]
+
+      HRO:
+        - [0, 0, "L1 Pasillo"]
+        - [0, 1, "L2 Sala 1"]
+        - [0, 2, "L3 Sala 2"]
+        - [0, 3, "L4 Pieza centro"]
+        - [0, 4, "L5 Pieza placar"]
+        - [0, 5, "L6 Rocio"]
+        - [0, 6, "L7 Agustin"]
+        - [0, 7, "L8 Baño 1"]
+        - [0, 8, "L9 Baño 2"]
+        - [0, 9, "L10 Baño_p 1"]
+        - [0, 10, "L11 Baño_p 2"]
+        - [0, 11, "L12 Escalera"]
+        - [0, 12, "L13 Frente"]
+        - [0, 13, "L14 Alero patio"]
+        - [1, 0, "C1 Encendido crepuscular"]
+        - [1, 1, "C2 Apagado crepuscular"]
+        - [1, 2, "C3 Apagado total"]
+        - [1, 3, "C4 Temp alero"]
+        - [1, 4, "C4 Temp escalera"]  
+
+
+    PB:
+      serial_port: '/dev/ttyUSB0'
+      serial_baudrate: 19200
+      serial_parity: 'E'
+      serial_stopbits: 1
+      serial_bytesize: 8
+      slave_id: 10
+      register_address: 1
+      delay: 2
+      serial_errors: 200
+      serial_sleep: 40
+      quantity_HRO : 2
+      quantity_HRI : 1      
+
+      HRI:
+        - [0, 0, "I1 Ingreso 1"]
+        - [0, 1, "I2 Ingreso 2"]
+        - [0, 2, "I3 Escalera"]
+        - [0, 3, "I4 Puerta ingreso"]
+        - [0, 4, "I5 Garage 1"]
+        - [0, 5, "I6 Garage 2"]
+        - [0, 6, "I7 Pasillo"]
+        - [0, 7, "I8 Comedor 1"]
+        - [0, 8, "I9 Comedor 2"]
+        - [0, 9, "I10 Comedor 3"]
+        - [0, 10, "I11 Galeria"]
+        - [0, 11, "I12 Garage"]
+        - [0, 12, "I13 Porton"]
+        - [0, 13, "I14 Libre"]
+        - [0, 14, "I15 Crepuscular"]
+
+      HRO:
+        - [0, 0, "L1 Entrada"]
+        - [0, 1, "L2 Living extremos"]
+        - [0, 2, "L3 Living cruz"]
+        - [0, 3, "L4 Living centro"]
+        - [0, 4, "L5 Pasillo"]        
+        - [0, 5, "L6 Baño"]
+        - [0, 6, "L7 Garaje"]
+        - [0, 7, "L8 Comedor extremo"]
+        - [0, 8, "L9 Comedor cruz"]
+        - [0, 9, "L10 Comedor centro"]
+        - [0, 10, "L11 Desayunador"]
+        - [0, 11, "L12 Alacena"]
+        - [0, 12, "L13 Porche"]
+        - [0, 13, "L14 Porton"]
+        - [0, 14, "L15 Modbus act"]
+        - [1, 1, "C1 Cortesia"]
+        - [1, 2, "C2 On crepuscular"]
+        - [1, 3, "C3 Off crepuscular"]
+        - [1, 4, "C4 Apagado total"]
+        - [1, 5, "C5 Temporal garaje"]
+        - [1, 6, "C6 Porton"]
+        - [1, 7, "C7 Porton temp"]
+        - [1, 8, "C8 Habilita porton"]
+       
+
+    AL:
+      serial_port: '/dev/ttyUSB0'
+      serial_baudrate: 19200
+      serial_parity: 'N'
+      serial_stopbits: 1
+      serial_bytesize: 8
+      slave_id: 30
+      register_address: 1
+      delay: 2
+      serial_errors: 200
+      serial_sleep: 40
+      quantity_HRO : 2
+      quantity_HRI : 1    
+
+      HRI:
+        - [0, 0, "PA Sensor Rocio"]
+        - [0, 1, "PA Sensor Agus"]
+        - [0, 2, "PA Sensor Bano1"]
+        - [0, 3, "PA Sensor Bano2"]
+        - [0, 4, "PA Sensor SalaS"]
+        - [0, 5, "PA Sensor Pieza 1"]
+        - [0, 6, "PA Sensor Pieza 2"]
+        - [0, 7, "PB Sensor Living"]
+        - [0, 8, "PB Sensor Bano"]
+        - [0, 9, "PB Sensor Cocina"]
+        - [0, 10, "PB Sensor Comedor"]
+        - [0, 11, "PB Sensor Garaje"]
+        - [0, 12, "PB puerta cocina"]
+        - [0, 13, "PB puerta comedor"]
+        - [0, 14, "PB ventana comedor"]
+        - [0, 15, "Pulsador comando_alarma"]
+
+      HRO:
+        - [0, 0, "Sirena Externa"]
+        - [0, 1, "Sirena Interna"]
+        - [0, 2, "R3"]
+        - [0, 3, "R4"]
+        - [0, 4, "Alarma activa"]
+        - [0, 5, "Alarma disparada"]
+        - [0, 6, "R7"]
+        - [0, 7, "R8 Comedor extremo"]
+        - [0, 8, "R9 Comedor cruz"]
+        - [0, 9, "R10 Comedor centro"]
+        - [0, 10, "R11 Desayunador"]
+        - [0, 11, "R12 Alacena"]
+        - [0, 12, "R13 Porche"]
+        - [0, 13, "R14 Porton"]
+        - [0, 14, "R15"]
+        - [0, 15, "R16"]
+        - [1, 0, "Hab_PA Sensor Rocio"]
+        - [1, 1, "Hab_PA Sensor Agus"]
+        - [1, 2, "Hab_PA Sensor Bano1"]
+        - [1, 3, "Hab_PA Sensor Bano2"]
+        - [1, 4, "Hab_PA Sensor SalaS"]
+        - [1, 5, "Hab_PA Sensor Pieza 1"]
+        - [1, 6, "Hab_PA Sensor Pieza 2"]
+        - [1, 7, "Hab_PB Sensor Living"]
+        - [1, 8, "Hab_PB Sensor Bano"]
+        - [1, 9, "Hab_PB Sensor Cocina"]
+        - [1, 10, "Hab_PB Sensor Comedor"]
+        - [1, 11, "Hab_PB Sensor Garaje"]
+        - [1, 12, "Hab_PB puerta cocina"]
+        - [1, 13, "Hab_PB puerta comedor"]
+        - [1, 14, "Hab_PB ventana comedor"]
+        - [1, 15, "Hab_Pulsador comando_alarma"]
